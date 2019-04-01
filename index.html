@@ -1,0 +1,115 @@
+<html>
+
+<!-- begin head -->
+<head>
+    <title>Map Demo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="js/jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="map.css" type="text/css"/>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="js/jquery-jvectormap-world-mill.js"></script>
+
+</head>
+<!-- end head -->
+
+<!-- begin body -->
+<body class="text-center">
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Project Name</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <div class="row">
+                <div class="input-group">
+                <input class="form-control py-2 border-right-0 border" type="search" value="" placeholder="Search" id="example-search-input" autocomplete="off">
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+                    </span>
+                </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+    
+      <main role="main" class="inner cover">
+
+            <div id="world-map-markers" style="width: 1200px; height: 800px !important"></div>
+      </main>
+    
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Proof of concept only. See <strong><a href="https://google.com/">here</a></strong> for more information.</p>
+        </div>
+      </footer>
+    </div>
+    </body>
+<!-- end body -->
+
+<!-- begin script -->
+<script>
+$(function(){
+  $('#world-map-markers').vectorMap({
+    map: 'world_mill',
+    scaleColors: ['#C8EEFF', '#0071A4'],
+    normalizeFunction: 'polynomial',
+    hoverOpacity: 0.7,
+    hoverColor: false,
+    markerStyle: {
+        initial: {
+            fill: '#991D85',
+            stroke: '#991D85',
+            "fill-opacity": 1,
+            "stroke-width": 1,
+            "stroke-opacity": 1,
+            r: 6
+        },
+        hover: {
+            stroke: 'black',
+            "stroke-width": 2,
+            cursor: 'pointer'
+        },
+        selected: {
+            fill: 'blue'
+        },
+        selectedHover: {
+        }
+    },
+    backgroundColor: '#fff',
+    regionStyle: {
+        initial: {
+            fill: '#c4bfb4',
+            "fill-opacity": 1,
+            stroke: 'none',
+            "stroke-width": 0,
+            "stroke-opacity": 1
+        },
+        hover: {
+            "fill-opacity": 0.75,
+            cursor: 'pointer'
+        },
+        selected: {
+            fill: 'yellow'
+        },
+        selectedHover: {
+        }
+    },
+    onRegionClick: function(e,  code,  isSelected,  selectedRegions){
+        $('#world-map-markers').vectorMap('get','mapObject').setFocus({region: code, animate: true});
+    },
+    markers: [
+
+    ]
+  });
+});
+</script>
+<!-- end script -->
+
+</html>

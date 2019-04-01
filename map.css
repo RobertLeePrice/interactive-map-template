@@ -1,0 +1,14 @@
+
+.jvectormap-zoomin, .jvectormap-zoomout {
+    background-color: #991D85;
+    width: 16px;
+    height: 16px;
+}
+
+.jvectormap-zoomout {
+    top: 36px;
+}
+
+.jvectormap-zoomin:hover, .jvectormap-zoomout:hover {
+    background-color: #7a176a;
+}
